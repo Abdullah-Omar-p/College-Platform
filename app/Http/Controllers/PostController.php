@@ -25,7 +25,7 @@ class PostController extends Controller
         return $this->postRepository->create($request->validated());
     }
 
-    public function findById(int $postId)
+    public function findById(string $postId)
     {
         return $this->postRepository->findById($postId);
     }
