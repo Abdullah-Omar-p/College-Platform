@@ -7,13 +7,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class StudentQuizResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'quiz_id'=>$this->quiz_id,
+            'student_id' => $this->student_id,
+            'quiz_name' => $this->quiz_name,
+            'grade' => $this->grade,
+        ];
     }
 }

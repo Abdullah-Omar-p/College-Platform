@@ -14,7 +14,10 @@ class UpdateLikeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required|exists:likes,id',
+            'student_id' => 'required|exists:users,id',
+            'post_id' => 'required|exists:posts,id',
+            'type' => 'required|string|in:like,dislike,love',
         ];
     }
 

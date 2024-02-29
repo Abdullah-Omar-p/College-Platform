@@ -14,7 +14,9 @@ class UpdateNotificationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id'=> 'required|exists:notifications,id',
+            'user_id' => 'required|exists:users,id',
+            'message' => 'required|string',
         ];
     }
 

@@ -14,7 +14,12 @@ class UpdateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required|exists:courses,id',
+            'name' => 'required|string|min:5|max:255',
+            'description'=> 'required|string|min:5|max:700',
+            'level'=> 'required|string|in:first,second,third,fourth,fifth,sixth,seventh',
+            'semester' =>'required|string|in:first,second',
+            'units'=>'required|string|in:0,1,2,3,4',
         ];
     }
 

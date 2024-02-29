@@ -14,7 +14,11 @@ class UpdateQuizRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required|exists:quizzes,id',
+            'name' => 'required|string',
+            'description'=> 'required|string',
+            'course_id'=> 'required|exists:courses,id',
+            'prof_id' =>'required|exists:users,id',
         ];
     }
 

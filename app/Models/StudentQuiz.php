@@ -9,6 +9,7 @@ class StudentQuiz extends Model
 {
     use HasFactory;
 
+    protected $table = 'student_quiz';
     protected $fillable = [
         'quiz_id',
         'student_id',

@@ -7,13 +7,16 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class GradeResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'student_id' => $this->student_id,
+            'course_id' => $this->course_id,
+            'grade' => $this->grade,
+            'course_name' => $this->course_name,
+            'level' => $this->level,
+            'semester' => $this->semester,
+        ];
     }
 }

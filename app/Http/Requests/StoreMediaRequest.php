@@ -14,7 +14,11 @@ class StoreMediaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'filename' => 'required|string',
+            // TODO : Check How To Ensure Is Found In Table ..
+            'mediaable_id' => 'required|string',
+            'mediaable_type' => 'required|integer',
+            'type' => 'required|in:video,image,voice',
         ];
     }
 

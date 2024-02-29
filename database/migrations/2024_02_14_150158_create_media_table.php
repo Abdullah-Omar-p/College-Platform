@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('mediaable', function (Blueprint $table) {
             $table->id();
-            $table->string('filename')->nullable();   
-            $table->integer('mediaabel_id');
-            $table->string('mediaable_type');             
+            $table->string('filename')->nullable();
+            $table->integer('mediaable_id');
+            $table->string('mediaable_type');
             $table->enum('type',['video','image','voice']);
             $table->timestamps();
         });

@@ -14,7 +14,12 @@ class StoreQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'choice_1' => 'required|string',
+            'choice_2'=> 'required|string',
+            'choice_3'=> 'required|string',
+            'choice_4'=> 'required|string',
+            'right_answer'=> 'required|string',
+            'quiz_id'=> 'required|exists:quizzes,id',
         ];
     }
 

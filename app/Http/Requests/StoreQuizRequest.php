@@ -14,7 +14,10 @@ class StoreQuizRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'description'=> 'required|string',
+            'course_id'=> 'required|exists:courses,id',
+            'prof_id' =>'required|exists:users,id',
         ];
     }
 

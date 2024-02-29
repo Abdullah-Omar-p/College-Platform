@@ -14,7 +14,8 @@ class StoreCourseProfRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'prof_id' => 'required|exists:users,id',
+            'course_id' => 'required|exists:users,id',
         ];
     }
 

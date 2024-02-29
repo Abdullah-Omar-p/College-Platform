@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->string('national_no')->unique();
+            $table->string('national_id')->unique()->nullable();
             $table->enum('role', [1/*Professor*/, 2/*Student*/,3 /*Control Member*/,4 /*Admin*/])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

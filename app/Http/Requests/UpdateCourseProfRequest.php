@@ -14,7 +14,9 @@ class UpdateCourseProfRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required|exists:course_prof,id',
+            'prof_id' => 'required|exists:users,id',
+            'course_id' => 'required|exists:users,id',
         ];
     }
 

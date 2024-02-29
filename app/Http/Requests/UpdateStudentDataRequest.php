@@ -14,7 +14,13 @@ class UpdateStudentDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required|exists:student_data,id',
+            'user_id' => 'required|exists:users,id',
+            'national_id' => 'required|unique:users,national_id',
+            'phone' => 'required|unique:users,phone',
+            'address' => 'required|string',
+            'family_phone'=>'required|string',
+            'email' => 'required|unique:users,email',
         ];
     }
 

@@ -14,7 +14,8 @@ class StoreStudentCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'student_id'=> 'required|exists:course_student,id',
+            'course_id' => 'required|exists:courses,id',
         ];
     }
 
