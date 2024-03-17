@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Helpet;
+namespace App\Helpers;
 
 class Helper {
 
     /**
      * Response data
      * return response as json in specific format includes message code and description
-     * 
+     *
      * @param string $message
      * @param boolean $status
      * @param mixed $data
@@ -18,7 +18,7 @@ class Helper {
         $response = ['message' => $message,'status' => $status];
         if($data !== false){
             $response['data'] = $data;
-            
+
             if($dataWithPagination){
                 $paginationData = [
                     'total' => $data->total(),
@@ -37,7 +37,7 @@ class Helper {
 
     /**
      * Clean array values if has value contains specific seperator
-     * 
+     *
      * @param array $Items
      * @param string $Seperator
      */

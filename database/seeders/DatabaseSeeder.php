@@ -3,19 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Comment;
-use App\Models\Course;
-use App\Models\CourseProf;
-use App\Models\CourseStudent;
-use App\Models\Grade;
-use App\Models\Like;
-use App\Models\Media;
-use App\Models\Notification;
-use App\Models\Post;
-use App\Models\Question;
-use App\Models\Quiz;
-use App\Models\StudentData;
-use App\Models\StudentQuiz;
+use App\Models\{Comment,Course,CourseProf,CourseStudent,Grade,Like,Media,
+    Notification,Post,Question,Quiz,StudentData,StudentQuiz};
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -29,9 +18,99 @@ class DatabaseSeeder extends Seeder
         $studentRole = Role::create(['name' => 'student']);
         $controlMemberRole = Role::create(['name'=>'control-member']);
 
-        $permission = Permission::create(['name'=>'create']);
+        // Define and assign permissions for Comment model
+        $listCommentPermission = Permission::create(['name' => 'Comment.list']);
+        $createCommentPermission = Permission::create(['name' => 'Comment.create']);
+        $updateCommentPermission = Permission::create(['name' => 'Comment.update']);
+        $findCommentPermission = Permission::create(['name' => 'Comment.find']);
+        $deleteCommentPermission = Permission::create(['name' => 'Comment.delete']);
 
-        $superAdminRole->syncPermissions([]);
+// Define and assign permissions for Course model
+        $listCoursePermission = Permission::create(['name' => 'Course.list']);
+        $createCoursePermission = Permission::create(['name' => 'Course.create']);
+        $updateCoursePermission = Permission::create(['name' => 'Course.update']);
+        $findCoursePermission = Permission::create(['name' => 'Course.find']);
+        $deleteCoursePermission = Permission::create(['name' => 'Course.delete']);
+
+// Define and assign permissions for CourseProf model
+        $listCourseProfPermission = Permission::create(['name' => 'CourseProf.list']);
+        $createCourseProfPermission = Permission::create(['name' => 'CourseProf.create']);
+        $updateCourseProfPermission = Permission::create(['name' => 'CourseProf.update']);
+        $findCourseProfPermission = Permission::create(['name' => 'CourseProf.find']);
+        $deleteCourseProfPermission = Permission::create(['name' => 'CourseProf.delete']);
+
+// Define and assign permissions for CourseStudent model
+        $listCourseStudentPermission = Permission::create(['name' => 'CourseStudent.list']);
+        $createCourseStudentPermission = Permission::create(['name' => 'CourseStudent.create']);
+        $updateCourseStudentPermission = Permission::create(['name' => 'CourseStudent.update']);
+        $findCourseStudentPermission = Permission::create(['name' => 'CourseStudent.find']);
+        $deleteCourseStudentPermission = Permission::create(['name' => 'CourseStudent.delete']);
+
+// Define and assign permissions for Grade model
+        $listGradePermission = Permission::create(['name' => 'Grade.list']);
+        $createGradePermission = Permission::create(['name' => 'Grade.create']);
+        $updateGradePermission = Permission::create(['name' => 'Grade.update']);
+        $findGradePermission = Permission::create(['name' => 'Grade.find']);
+        $deleteGradePermission = Permission::create(['name' => 'Grade.delete']);
+
+// Define and assign permissions for Like model
+        $listLikePermission = Permission::create(['name' => 'Like.list']);
+        $createLikePermission = Permission::create(['name' => 'Like.create']);
+        $updateLikePermission = Permission::create(['name' => 'Like.update']);
+        $findLikePermission = Permission::create(['name' => 'Like.find']);
+        $deleteLikePermission = Permission::create(['name' => 'Like.delete']);
+
+// Define and assign permissions for Media model
+        $listMediaPermission = Permission::create(['name' => 'Media.list']);
+        $createMediaPermission = Permission::create(['name' => 'Media.create']);
+        $updateMediaPermission = Permission::create(['name' => 'Media.update']);
+        $findMediaPermission = Permission::create(['name' => 'Media.find']);
+        $deleteMediaPermission = Permission::create(['name' => 'Media.delete']);
+
+// Define and assign permissions for Notification model
+        $listNotificationPermission = Permission::create(['name' => 'Notification.list']);
+        $createNotificationPermission = Permission::create(['name' => 'Notification.create']);
+        $updateNotificationPermission = Permission::create(['name' => 'Notification.update']);
+        $findNotificationPermission = Permission::create(['name' => 'Notification.find']);
+        $deleteNotificationPermission = Permission::create(['name' => 'Notification.delete']);
+
+// Define and assign permissions for Post model
+        $listPostPermission = Permission::create(['name' => 'Post.list']);
+        $createPostPermission = Permission::create(['name' => 'Post.create']);
+        $updatePostPermission = Permission::create(['name' => 'Post.update']);
+        $findPostPermission = Permission::create(['name' => 'Post.find']);
+        $deletePostPermission = Permission::create(['name' => 'Post.delete']);
+
+// Define and assign permissions for Question model
+        $listQuestionPermission = Permission::create(['name' => 'Question.list']);
+        $createQuestionPermission = Permission::create(['name' => 'Question.create']);
+        $updateQuestionPermission = Permission::create(['name' => 'Question.update']);
+        $findQuestionPermission = Permission::create(['name' => 'Question.find']);
+        $deleteQuestionPermission = Permission::create(['name' => 'Question.delete']);
+
+// Define and assign permissions for Quiz model
+        $listQuizPermission = Permission::create(['name' => 'Quiz.list']);
+        $createQuizPermission = Permission::create(['name' => 'Quiz.create']);
+        $updateQuizPermission = Permission::create(['name' => 'Quiz.update']);
+        $findQuizPermission = Permission::create(['name' => 'Quiz.find']);
+        $deleteQuizPermission = Permission::create(['name' => 'Quiz.delete']);
+
+// Define and assign permissions for StudentData model
+        $listStudentDataPermission = Permission::create(['name' => 'StudentData.list']);
+        $createStudentDataPermission = Permission::create(['name' => 'StudentData.create']);
+        $updateStudentDataPermission = Permission::create(['name' => 'StudentData.update']);
+        $findStudentDataPermission = Permission::create(['name' => 'StudentData.find']);
+        $deleteStudentDataPermission = Permission::create(['name' => 'StudentData.delete']);
+
+// Define and assign permissions for StudentQuiz model
+        $listStudentQuizPermission = Permission::create(['name' => 'StudentQuiz.list']);
+        $createStudentQuizPermission = Permission::create(['name' => 'StudentQuiz.create']);
+        $updateStudentQuizPermission = Permission::create(['name' => 'StudentQuiz.update']);
+        $findStudentQuizPermission = Permission::create(['name' => 'StudentQuiz.find']);
+        $deleteStudentQuizPermission = Permission::create(['name' => 'StudentQuiz.delete']);
+
+
+        $superAdminRole->syncPermissions(Permission::all());
         $professorRole->syncPermissions([]);
         $studentRole->syncPermissions([]);
         $controlMemberRole->syncPermissions([]);
@@ -58,7 +137,7 @@ class DatabaseSeeder extends Seeder
         $courses = Course::factory(60)->create();
         $quizzes = Quiz::factory(50)->create();
         $questions = Question::factory(99)->create();
-        $posts = Post::factory(30)->create();
+        $posts = Post::factory(100)->create();
         $comments = Comment::factory(50)->create();
         $media = Media::factory(60)->create();
         $likes = Like::factory(99)->create();

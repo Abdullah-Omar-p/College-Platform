@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShowRequest;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Interfaces\PostRepositoryInterface;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -35,7 +35,7 @@ class PostController extends Controller
         return $this->postRepository->update($postId, $request->validated());
     }
 
-    public function destroy(int $postId)
+    public function delete(int $postId)
     {
         return $this->postRepository->delete($postId);
     }

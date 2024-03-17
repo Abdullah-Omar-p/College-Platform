@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->hasOne(StudentData::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
     public function grades()
     {
         return $this->hasMany(Grade::class , 'student_id');

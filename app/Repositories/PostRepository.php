@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Helpet\Helper;
+use App\Helpers\Helper;
+use App\Http\Resources\PostResource;
 use App\Interfaces\PostRepositoryInterface;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Http;
 
 class PostRepository implements PostRepositoryInterface
 {
@@ -16,7 +16,6 @@ class PostRepository implements PostRepositoryInterface
         if ($posts->isEmpty()) {
             return Helper::responseData('No posts found', false, null, 404);
         }
-        $posts->appends(['key' => 'value']);
         return Helper::responseData('Posts found', true, $posts, 200);
     }
 
@@ -32,12 +31,16 @@ class PostRepository implements PostRepositoryInterface
 
     public function create(array $details)
     {
-        return Post::create($details);
+        $input = $details;
+        $input ['prof_id'] = auth('sanctum')->user();
+        return Post::create($input);
     }
 
     public function update(int $id, array $details)
     {
-        return Post::query()->where('id', $id)->update($details);
+        Post::query()->where('id', $id)->update($details);
+        $post = Post::find($id);
+        return $post;
     }
 
     public function delete(int $id)
@@ -49,5 +52,9 @@ class PostRepository implements PostRepositoryInterface
         } catch (ModelNotFoundException $e) {
             return Helper::responseData('Post Not Found', false, null, 404);
         }
+    }
+
+    private function query()
+    {
     }
 }
