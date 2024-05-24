@@ -32,7 +32,7 @@ class PostRepository implements PostRepositoryInterface
     public function create(array $details)
     {
         $input = $details;
-        $input ['prof_id'] = auth('sanctum')->user();
+        $input ['prof_id'] = auth('sanctum')->user()->id;
         return Post::create($input);
     }
 
