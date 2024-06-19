@@ -22,7 +22,8 @@ class PostController extends Controller
 
     public function create(StorePostRequest $request)
     {
-        return $this->postRepository->create($request->validated());
+        $user = auth('sanctum')->user();
+        return $this->postRepository->create($request->validated(), $user);
     }
 
     public function findById(int $postId)

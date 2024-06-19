@@ -16,7 +16,7 @@ class PostRepository implements PostRepositoryInterface
         if ($posts->isEmpty()) {
             return Helper::responseData('No posts found', false, null, 404);
         }
-        return Helper::responseData('Posts found', true, $posts, 200);
+        return Helper::responseData('Posts found', true, PostResource::make($posts), 200);
     }
 
     public function findById(int $id)
@@ -29,18 +29,20 @@ class PostRepository implements PostRepositoryInterface
         }
     }
 
-    public function create(array $details)
+    public function create(array $details, $user)
     {
         $input = $details;
-        $input ['prof_id'] = auth('sanctum')->user()->id;
-        return Post::create($input);
+        $input ['prof_id'] = $user->id;
+        $post = Post::create($input);
+        return Helper::responseData('Post Added Successfully', true, PostResource::make($post), 200);
+
     }
 
     public function update(int $id, array $details)
     {
         Post::query()->where('id', $id)->update($details);
         $post = Post::find($id);
-        return $post;
+        return Helper::responseData('Post Updated Successfully', true, PostResource::make($post), 200);
     }
 
     public function delete(int $id)

@@ -15,7 +15,6 @@ class StorePostRequest extends FormRequest
     {
         return [
             'body' => 'required|string',
-            'prof_id' => 'required|exists:users,id',
         ];
     }
 

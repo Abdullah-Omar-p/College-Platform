@@ -115,23 +115,45 @@ class DatabaseSeeder extends Seeder
         $studentRole->syncPermissions([]);
         $controlMemberRole->syncPermissions([]);
 
-        $user = \App\Models\User::updateOrCreate([
-            'email' => 'user@test.com',
+        $student__ = \App\Models\User::updateOrCreate([
+            'email' => 'student@test.com',
         ],[
             'name' => 'Test User',
             'phone' => '4924802402',
             'national_id' =>'84340294204229482',
             'password'=>bcrypt(123456)
         ]);
+        $student__->assignRole('student');
 
+        $superAdmin__ = \App\Models\User::updateOrCreate([
+            'email' => 'superadmin@test.com',
+        ],[
+            'name' => 'Test SuperAdmin',
+            'phone' => '4924802434',
+            'national_id' =>'84340297594229482',
+            'password'=>bcrypt(123456)
+        ]);
+        $superAdmin__->assignRole('super-admin');
 
+        $professor__ = \App\Models\User::updateOrCreate([
+            'email' => 'professor@test.com',
+        ],[
+            'name' => 'Test professor',
+            'phone' => '4923402402',
+            'national_id' =>'84340294908229482',
+            'password'=>bcrypt(123456)
+        ]);
+        $professor__->assignRole('professor');
 
-
-
-
-
-
-
+        $controlMember__ = \App\Models\User::updateOrCreate([
+            'email' => 'control_member@test.com',
+        ],[
+            'name' => 'Test control member',
+            'phone' => '4923402402',
+            'national_id' =>'84340739508229482',
+            'password'=>bcrypt(123456)
+        ]);
+        $controlMember__->assignRole('control-member');
 
         $users = \App\Models\User::factory(400)->create();
         $courses = Course::factory(60)->create();

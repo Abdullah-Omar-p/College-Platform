@@ -13,6 +13,8 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'body' => $this->body,
             'prof_id' => $this->prof_id,
+            'created_at'=> $this->created_at,
+            'updated_at'=> $this->updated_at,
         ];
     }
 }
