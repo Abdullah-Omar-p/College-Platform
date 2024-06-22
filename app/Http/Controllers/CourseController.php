@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Interfaces\CourseRepositoryInterface;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -21,7 +22,9 @@ class CourseController extends Controller
 
     public function create(StoreCourseRequest $request)
     {
-        return $this->courseRepository->create($request->validated());
+        $user = auth('sanctum')->user();
+        $this->authorize('create', Course::class);
+        return $this->courseRepository->create($request->validated(), $user);
     }
 
     public function findById(int $id)
@@ -31,11 +34,15 @@ class CourseController extends Controller
 
     public function update(int $id, UpdateCourseRequest $request)
     {
+        $course = Course::findOrFail($id);
+        $this->authorize('update', $course);
         return $this->courseRepository->update($id, $request->validated());
     }
 
     public function delete(int $id)
     {
+        $course = Course::findOrFail($id);
+        $this->authorize('delete', $course);
         return $this->courseRepository->delete($id);
     }
 }

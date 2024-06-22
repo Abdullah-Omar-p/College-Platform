@@ -59,6 +59,12 @@ class DatabaseSeeder extends Seeder
         $updateLikePermission = Permission::create(['name' => 'Like.update']);
         $findLikePermission = Permission::create(['name' => 'Like.find']);
         $deleteLikePermission = Permission::create(['name' => 'Like.delete']);
+// Define and assign permissions for User model
+        $listUserPermission = Permission::create(['name' => 'User.list']);
+        $createUserPermission = Permission::create(['name' => 'User.create']);
+        $updateUserPermission = Permission::create(['name' => 'User.update']);
+        $findUserPermission = Permission::create(['name' => 'User.find']);
+        $deleteUserPermission = Permission::create(['name' => 'User.delete']);
 
 // Define and assign permissions for Media model
         $listMediaPermission = Permission::create(['name' => 'Media.list']);

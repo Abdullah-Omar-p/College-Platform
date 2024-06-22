@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->enum('type',['like','dislike','love']);
 
-            $table->unsignedBigInteger('student_id');  
+            $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->unsignedBigInteger('post_id');  
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            
+            $table->foreignId('post_id')->constrained()->restrictOnDelete();
+
             $table->timestamps();
         });
     }

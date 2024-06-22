@@ -2,33 +2,54 @@
 
 namespace App\Repositories;
 
+use App\Helpers\Helper;
+use App\Http\Resources\UserResource;
 use App\Interfaces\UserRepositoryInterface;
+use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserRepository implements UserRepositoryInterface
 {
-
     public function list()
     {
-        // TODO: Implement list() method.
+        $users = User::paginate(10);
+        if ($users->isEmpty()) {
+            return Helper::responseData('No users found', false, null, 404);
+        }
+        return Helper::responseData('Users found', true, UserResource::collection($users), 200);
     }
 
     public function findById(int $userId)
     {
-        // TODO: Implement findById() method.
+        try {
+            $user = User::findOrFail($userId);
+            return Helper::responseData('Success', true, UserResource::make($user), 200);
+        } catch (ModelNotFoundException $e) {
+            return Helper::responseData('User not found', false, null, 404);
+        }
     }
 
     public function create(array $details)
     {
-        // TODO: Implement create() method.
+        $user = User::create($details);
+        return Helper::responseData('User added successfully', true, new UserResource($user), 200);
     }
 
     public function update(int $userId, array $details)
     {
-        // TODO: Implement update() method.
+        User::where('id', $userId)->update($details);
+        $user = User::find($userId);
+        return Helper::responseData('User updated successfully', true, new UserResource($user), 200);
     }
 
     public function delete(int $userId)
     {
-        // TODO: Implement delete() method.
+        try {
+            $user = User::findOrFail($userId);
+            $user->delete();
+            return Helper::responseData('User deleted successfully', true, null, 200);
+        } catch (ModelNotFoundException $e) {
+            return Helper::responseData('User not found', false, null, 404);
+        }
     }
 }

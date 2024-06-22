@@ -21,7 +21,8 @@ class MediaController extends Controller
 
     public function create(StoreMediaRequest $request)
     {
-        return $this->mediaRepository->create($request->validated());
+        $user = auth('sanctum')->user();
+        return $this->mediaRepository->create($request->validated(), $user);
     }
 
     public function findById(int $id)

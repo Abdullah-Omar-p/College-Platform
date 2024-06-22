@@ -17,6 +17,9 @@ class QuestionResource extends JsonResource
             'choice_4' => $this->choice_4,
             'right_answer' => $this->right_answer,
             'quiz_id' => $this->quiz_id,
+            'user_id' => $this->user_id,
+            'created_at'=> $this->created_at,
+            'updated_at'=> $this->updated_at,
         ];
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ShowRequest;
+use App\Helpers\Helper;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Interfaces\PostRepositoryInterface;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -23,6 +24,7 @@ class PostController extends Controller
     public function create(StorePostRequest $request)
     {
         $user = auth('sanctum')->user();
+        $this->authorize('create', Post::class);
         return $this->postRepository->create($request->validated(), $user);
     }
 
@@ -33,11 +35,15 @@ class PostController extends Controller
 
     public function update(int $postId ,UpdatePostRequest $request)
     {
+        $post = Post::findOrFail($postId);
+        $this->authorize('update', $post);
         return $this->postRepository->update($postId, $request->validated());
     }
 
     public function delete(int $postId)
     {
+        $post = Post::findOrFail($postId);
+        $this->authorize('delete', $post);
         return $this->postRepository->delete($postId);
     }
 }

@@ -14,7 +14,6 @@ class UpdateQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:questions,id',
             'choice_1' => 'required|string',
             'choice_2'=> 'required|string',
             'choice_3'=> 'required|string',

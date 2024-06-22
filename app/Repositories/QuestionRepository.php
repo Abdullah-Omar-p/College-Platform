@@ -2,33 +2,63 @@
 
 namespace App\Repositories;
 
+use App\Helpers\Helper;
+use App\Http\Resources\QuestionResource;
 use App\Interfaces\QuestionRepositoryInterface;
+use App\Models\Question;
+use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class QuestionRepository implements QuestionRepositoryInterface
 {
-
     public function list()
     {
-        // TODO: Implement list() method.
+        $questions = Question::paginate(10);
+        if ($questions->isEmpty()) {
+            return Helper::responseData('No questions found', false, null, 404);
+        }
+        return Helper::responseData('Questions found', true, QuestionResource::collection($questions), 200);
     }
 
-    public function findById(int $id)
+    public function userQuestions($user)
     {
-        // TODO: Implement findById() method.
+        $questions = Question::where('user_id', $user->id)->get();
+        return Helper::responseData('Success', true, QuestionResource::collection($questions), 200);
     }
 
-    public function create(array $details)
+    public function findById(int $questionId)
     {
-        // TODO: Implement create() method.
+        try {
+            $question = Question::findOrFail($questionId);
+            return Helper::responseData('Success', true, QuestionResource::make($question), 200);
+        } catch (ModelNotFoundException $e) {
+            return Helper::responseData('Question Not Found', false, null, 404);
+        }
     }
 
-    public function update(int $id, array $details)
+    public function create(array $details, $user)
     {
-        // TODO: Implement update() method.
+        $input = $details;
+        $input['user_id'] = $user->id;
+        $question = Question::create($input);
+        return Helper::responseData('Question Added Successfully', true, new QuestionResource($question), 200);
     }
 
-    public function delete(int $id)
+    public function update(int $questionId, array $details)
     {
-        // TODO: Implement delete() method.
+        Question::where('id', $questionId)->update($details);
+        $question = Question::find($questionId);
+        return Helper::responseData('Question Updated Successfully', true, new QuestionResource($question), 200);
+    }
+
+    public function delete(int $questionId)
+    {
+        try {
+            $question = Question::findOrFail($questionId);
+            $question->delete();
+            return Helper::responseData('Question Deleted Successfully', true, null, 200);
+        } catch (ModelNotFoundException $e) {
+            return Helper::responseData('Question Not Found', false, null, 404);
+        }
     }
 }

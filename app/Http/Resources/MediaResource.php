@@ -15,6 +15,8 @@ class MediaResource extends JsonResource
             'mediaable_id' => $this->mediaable_id,
             'mediaable_type' => $this->mediaable_type,
             'type' => $this->type,
+            'created_at'=> $this->created_at,
+            'updated_at'=> $this->updated_at,
         ];
     }
 }

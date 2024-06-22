@@ -21,7 +21,8 @@ class NotificationController extends Controller
 
     public function create(StoreNotificationRequest $request)
     {
-        return $this->notificationRepository->create($request->validated());
+        $user = auth('sanctum')->user();
+        return $this->notificationRepository->create($request->validated(), $user);
     }
 
     public function findById(int $id)
@@ -29,9 +30,10 @@ class NotificationController extends Controller
         return $this->notificationRepository->findById($id);
     }
 
-    public function update(int $id, UpdateNotificationRequest $request)
+    public function userNotifications()
     {
-        return $this->notificationRepository->update($id, $request->validated());
+        $user = auth('sanctum')->user();
+        return $this->notificationRepository->userNotifications($user);
     }
 
     public function delete(int $id)

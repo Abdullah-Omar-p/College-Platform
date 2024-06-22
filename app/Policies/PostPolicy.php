@@ -2,36 +2,37 @@
 
 namespace App\Policies;
 
-use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
-class CommentControllerPolicy
+class PostPolicy
 {
-    public function create(User $user, Comment $comment = null)
+    public function create(User $user, Post $post = null)
     {
         switch (true) {
             case $user->hasAnyRole('super-admin'):
-            case $user->hasPermissionTo('comment.create'):
+            case $user->hasPermissionTo('Post.create'):
                 return true;
             default:
                 return false;
         }
     }
 
-    public function update(User $user, Comment $comment = null)
+    public function update(User $user, Post $post = null)
     {
         switch (true) {
-            case $user->id === $comment->user_id:
+            case $user->id === $post->prof_id:
                 return true;
             default :
                 return false;
         }
     }
 
-    public function delete(User $user, Comment $comment = null)
+    public function delete(User $user, Post $post = null)
     {
         switch (true) {
-            case $user->id === $comment->user_id:
+            case $user->id === $post->prof_id:
             case $user->hasAnyRole('super-admin'):
                 return true;
             default :

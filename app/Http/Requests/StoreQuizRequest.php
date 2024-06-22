@@ -17,7 +17,6 @@ class StoreQuizRequest extends FormRequest
             'name' => 'required|string',
             'description'=> 'required|string',
             'course_id'=> 'required|exists:courses,id',
-            'prof_id' =>'required|exists:users,id',
         ];
     }
 

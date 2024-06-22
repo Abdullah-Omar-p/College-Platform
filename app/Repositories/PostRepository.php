@@ -16,7 +16,7 @@ class PostRepository implements PostRepositoryInterface
         if ($posts->isEmpty()) {
             return Helper::responseData('No posts found', false, null, 404);
         }
-        return Helper::responseData('Posts found', true, PostResource::make($posts), 200);
+        return Helper::responseData('Posts found', true, PostResource::collection($posts), 200);
     }
 
     public function findById(int $id)

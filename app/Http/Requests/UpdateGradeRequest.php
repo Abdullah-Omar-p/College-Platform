@@ -14,7 +14,6 @@ class UpdateGradeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:grades,id',
             'student_id' => 'required|exists:users,id',
             'course_id' => 'required|exists:courses,id',
             'grade' => 'required|integer',

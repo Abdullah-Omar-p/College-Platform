@@ -16,6 +16,8 @@ class CommentResource extends JsonResource
             'parent_id' => $this-> parent_id,
             'user_id' => $this->user_id,
             'post_id' => $this->post_id,
+            'created_at'=> $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

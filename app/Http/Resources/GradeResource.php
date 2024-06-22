@@ -17,6 +17,9 @@ class GradeResource extends JsonResource
             'course_name' => $this->course_name,
             'level' => $this->level,
             'semester' => $this->semester,
+            'created_at'=> $this->created_at,
+            'updated_at' => $this->updated_at,
+            'user_id' => $this->user_id,
         ];
     }
 }

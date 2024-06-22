@@ -2,12 +2,19 @@
 
 namespace App\Providers;
 
-use App\Interfaces\{CommentRepositoryInterface, CourseProfRepositoryInterface,
-    CourseRepositoryInterface, CourseStudentRepositoryInterface, GradeRepositoryInterface,
-    LikeRepositoryInterface, MediaRepositoryInterface, NotificationRepositoryInterface,
-    PostRepositoryInterface, QuizRepositoryInterface, StudentDataRepositoryInterface,
-    UserRepositoryInterface
-};
+use App\Interfaces\{CommentRepositoryInterface,
+    CourseProfRepositoryInterface,
+    CourseRepositoryInterface,
+    CourseStudentRepositoryInterface,
+    GradeRepositoryInterface,
+    LikeRepositoryInterface,
+    MediaRepositoryInterface,
+    NotificationRepositoryInterface,
+    PostRepositoryInterface,
+    QuestionRepositoryInterface,
+    QuizRepositoryInterface,
+    StudentDataRepositoryInterface,
+    UserRepositoryInterface};
 use App\Repositories\{CommentRepository, CourseProfRepository, CourseRepository,
     CourseStudentRepository, GradeRepository, LikeRepository, MediaRepository,
     NotificationRepository, PostRepository, QuizRepository, StudentDataRepository,
@@ -28,10 +35,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(MediaRepositoryInterface::class, MediaRepository::class);
         $this->app->bind(LikeRepositoryInterface::class, LikeRepository::class);
         $this->app->bind(GradeRepositoryInterface::class, GradeRepository::class);
-        $this->app->bind(CourseStudentRepositoryInterface::class, CourseStudentRepository::class);
+        $this->app->bind(QuestionRepositoryInterface::class, QuestionRepository::class);
         $this->app->bind(CourseRepositoryInterface::class, CourseRepository::class);
-        $this->app->bind(CourseProfRepositoryInterface::class, CourseProfRepository::class);
-        $this->app->bind(QuizRepositoryInterface::class, QuestionRepository::class);
 
     }
 

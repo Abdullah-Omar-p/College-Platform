@@ -17,6 +17,8 @@ class StudentDataResource extends JsonResource
             'address' => $this->address,
             'family_phone' => $this->family_phone,
             'email' => $this->email,
+            'created_at'=> $this->created_at,
+            'updated_at'=> $this->updated_at,
         ];
     }
 }

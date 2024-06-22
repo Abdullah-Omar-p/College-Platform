@@ -9,13 +9,13 @@ class Grade extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',   
+        'id',
         'student_id',
         'course_id',
-        'grade',   
+        'grade',
         'course_name',
-        'level',     
-        'semester', 
+        'level',
+        'semester',
     ];
 
     public function user()

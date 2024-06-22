@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Quiz;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,8 @@ class QuestionFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::where('role',2)->pluck('id');
+        $userId = $user->random();
         $quiz = Quiz::all();
         $quizId = $quiz->random();
         $choice_1 = fake()->colorName();
@@ -33,6 +36,7 @@ class QuestionFactory extends Factory
             'choice_4' => $choice_4,
             'right_answer' => $rightAnswer,
             'quiz_id' => $quizId,
+            'user_id' => $userId,
 
         ];
     }

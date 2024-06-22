@@ -15,11 +15,10 @@ return new class extends Migration
             $table->string('choice_3');
             $table->string('choice_4');
             $table->string('right_answer');
-
+            // .. professor who add it ..
+            $table->foreignId('user_id')->constrained()->restrictOnDelete();
             // after student answers all questions you save grade in student_quiz pivot table
-            $table->unsignedBigInteger('quiz_id');
-
-            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            $table->foreignId('quiz_id')->constrained()->restrictOnDelete();
 
             $table->timestamps();
         });
