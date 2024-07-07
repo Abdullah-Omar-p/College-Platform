@@ -12,4 +12,4 @@
 
 
 # ``Description Summury``
-#### this is and educational project -> Build With Repository-Design-Pattern <br> for manage a college and add videos for courses and professors can add posts and there are quizzes has alot of questions and register courses and add professors to courses by super admin and there are control members that calculates students grades and then get grades of students.
+#### this is an educational project -> Build With Repository-Design-Pattern <br> for manage a college and add videos for courses and professors can add posts and there are quizzes has alot of questions and register courses and add professors to courses by super admin and there are control members that calculates students grades and then get grades of students.

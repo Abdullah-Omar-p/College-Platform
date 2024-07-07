@@ -2,41 +2,66 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMediaRequest;
-use App\Http\Requests\UpdateMediaRequest;
-use App\Interfaces\MediaRepositoryInterface;
+
+use App\Models\Media;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class MediaController extends Controller
+class MediaController
 {
-    private MediaRepositoryInterface $mediaRepository;
-    public function __construct(MediaRepositoryInterface $mediaRepository)
+
+    public static function saveMedia($request , $mimeType, $type, $model)
     {
-        $this->mediaRepository = $mediaRepository;
-    }
-    public function list()
-    {
-        return $this->mediaRepository->list();
+        $categoriesFolder = public_path('media');
+        $de = $request['media'];
+        $imageName = Str::slug($request['media']) . '.' . $de->getClientOriginalExtension();
+        $de->move($categoriesFolder, $imageName);
+        $image = config('app.url') . '/media/' . $imageName;
+        Media::create([
+            'filename' => $image,
+            'mediaable_id' => $type->id,
+            'mediaable_type' => $model,
+            'type' => $mimeType,
+        ]);
     }
 
-    public function create(StoreMediaRequest $request)
+    public static function updateMedia($request , $mimeType, $type, $model, $id)
     {
-        $user = auth('sanctum')->user();
-        return $this->mediaRepository->create($request->validated(), $user);
+        $existingMedia = Media::where('mediaable_id', $id)->where('mediaable_type', Post::class)->first();
+        if ($existingMedia) {
+            $existingMediaPath = public_path('media') . '/' . basename($existingMedia->filename);
+            if (file_exists($existingMediaPath)) {
+                unlink($existingMediaPath);
+            }
+            $existingMedia->delete();
+        }
+        // Handle new media file
+        $categoriesFolder = public_path('media');
+        $de = $request['media'];
+        $imageName = Str::slug($request['media']) . '.' . $de->getClientOriginalExtension();
+        $de->move($categoriesFolder, $imageName);
+        $image = config('app.url') . '/media/' . $imageName;
+        Media::create([
+            'filename' => $image,
+            'mediaable_id' => $type->id,
+            'mediaable_type' => $model,
+            'type' => $mimeType,
+        ]);
     }
 
-    public function findById(int $id)
+    public static function removeMedia($modelId, $modelType)
     {
-        return $this->mediaRepository->findById($id);
-    }
+        $mediaItems = Media::where('mediaable_id', $modelId)
+            ->where('mediaable_type', $modelType)
+            ->get();
 
-    public function update(int $id, UpdateMediaRequest $request)
-    {
-        return $this->mediaRepository->update($id, $request->validated());
-    }
-
-    public function delete(int $id)
-    {
-        return $this->mediaRepository->delete($id);
+        foreach ($mediaItems as $media) {
+            $mediaPath = public_path('media') . '/' . basename($media->filename);
+            if (file_exists($mediaPath)) {
+                unlink($mediaPath);
+            }
+            $media->delete();
+        }
     }
 }

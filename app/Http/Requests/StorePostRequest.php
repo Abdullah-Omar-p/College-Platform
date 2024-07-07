@@ -15,6 +15,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'body' => 'required|string',
+            'media' => 'nullable|file|max:102400', // max size is in kilobytes
         ];
     }
 

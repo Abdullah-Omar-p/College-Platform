@@ -3,10 +3,13 @@
 namespace App\Repositories;
 
 use App\Helpers\Helper;
+use App\Http\Controllers\MediaController;
 use App\Http\Resources\PostResource;
 use App\Interfaces\PostRepositoryInterface;
+use App\Models\Media;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Str;
 
 class PostRepository implements PostRepositoryInterface
 {
@@ -34,14 +37,23 @@ class PostRepository implements PostRepositoryInterface
         $input = $details;
         $input ['prof_id'] = $user->id;
         $post = Post::create($input);
+        $mimeType = $details['media']->getMimeType();
+        if (isset($details['media'])) {
+            MediaController::saveMedia($details, $mimeType, $post, Post::class);
+        }
         return Helper::responseData('Post Added Successfully', true, PostResource::make($post), 200);
 
     }
 
     public function update(int $id, array $details)
     {
-        Post::query()->where('id', $id)->update($details);
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
+        $post->update($details);
+
+        if (isset($details['media'])) {
+            $mimeType = $details['media']->getMimeType();
+            MediaController::updateMedia($details, $mimeType, $post, Post::class, $id);
+        }
         return Helper::responseData('Post Updated Successfully', true, PostResource::make($post), 200);
     }
 
@@ -50,6 +62,7 @@ class PostRepository implements PostRepositoryInterface
         try {
             $post = Post::findOrFail($id);
             $post->delete();
+            MediaController::removeMedia($post->id, Post::class);
             return Helper::responseData('Post Deleted Successfully', true, null, 200);
         } catch (ModelNotFoundException $e) {
             return Helper::responseData('Post Not Found', false, null, 404);

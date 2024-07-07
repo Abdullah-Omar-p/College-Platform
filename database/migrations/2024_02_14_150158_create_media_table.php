@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('filename')->nullable();
             $table->integer('mediaable_id');
             $table->string('mediaable_type');
-            $table->enum('type',['video','image','voice']);
+            $table->string('type');
             $table->timestamps();
         });
     }

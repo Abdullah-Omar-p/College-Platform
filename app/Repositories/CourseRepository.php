@@ -20,6 +20,10 @@ class CourseRepository implements CourseRepositoryInterface
         return Helper::responseData('Courses found', true, CourseResource::collection($courses), 200);
     }
 
+    public function addVideo($video)
+    {
+
+    }
     public function findById(int $id)
     {
         try {
