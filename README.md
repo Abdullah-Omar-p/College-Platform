@@ -13,23 +13,3 @@
 
 # ``Description Summury``
 #### this is and educational project for manage a college and add videos for courses and professors can add posts and there are quizzes has alot of questions and register courses and add professors to courses by super admin and there are control members that calculates students grades and then get grades of students.
-
-
-# ``Authentication Endpoints``
-### - [Login](#)
-**``URL``**: /auth/login <br>
-**``Method``**: POST <br>
-**``Description``**: Authenticate a user and generate an access token. <br>
-#### Request Body:
-**``email``**: User's email <br>
-**``password``**: User's password <br>
-#### Response:
-Returns an access token if authentication is successful. <br>
-
-### - [Logout](#)
-``URL``: /auth/logout <br>
-``Method``: POST <br>
-``Description``: Logout the currently authenticated user. <br>
-``Authorization Header``: Bearer token <br>
-#### Response:
-Returns a success message upon successful logout. <br>
