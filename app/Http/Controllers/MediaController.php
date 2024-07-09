@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Media;
-use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class MediaController
@@ -28,7 +26,7 @@ class MediaController
 
     public static function updateMedia($request , $mimeType, $type, $model, $id)
     {
-        $existingMedia = Media::where('mediaable_id', $id)->where('mediaable_type', Post::class)->first();
+        $existingMedia = Media::where('mediaable_id', $id)->where('mediaable_type', $model)->first();
         if ($existingMedia) {
             $existingMediaPath = public_path('media') . '/' . basename($existingMedia->filename);
             if (file_exists($existingMediaPath)) {
