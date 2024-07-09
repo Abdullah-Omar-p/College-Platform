@@ -15,7 +15,7 @@ class PostRepository implements PostRepositoryInterface
 {
     public function list()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::with('media')->paginate(10);
         if ($posts->isEmpty()) {
             return Helper::responseData('No posts found', false, null, 404);
         }
@@ -25,7 +25,7 @@ class PostRepository implements PostRepositoryInterface
     public function findById(int $id)
     {
         try {
-            $post = Post::query()->findOrFail($id);
+            $post = Post::query()->with('media')->findOrFail($id);
             return Helper::responseData('Success', true, PostResource::make($post), 200);
         } catch (ModelNotFoundException $e) {
             return Helper::responseData('Post Not Found', false, null, 404);
@@ -41,6 +41,7 @@ class PostRepository implements PostRepositoryInterface
         if (isset($details['media'])) {
             MediaController::saveMedia($details, $mimeType, $post, Post::class);
         }
+        $post->load('media');
         return Helper::responseData('Post Added Successfully', true, PostResource::make($post), 200);
 
     }
@@ -49,7 +50,7 @@ class PostRepository implements PostRepositoryInterface
     {
         $post = Post::findOrFail($id);
         $post->update($details);
-
+        $post->load('media');
         if (isset($details['media'])) {
             $mimeType = $details['media']->getMimeType();
             MediaController::updateMedia($details, $mimeType, $post, Post::class, $id);

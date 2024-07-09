@@ -17,6 +17,7 @@ class CourseResource extends JsonResource
             'level' => $this->level,
             'semester' => $this->semester,
             'units' => $this->units,
+            'media' => MediaResource::collection($this->whenLoaded('media')), // Eager load media
             'created_at'=> $this->created_at,
             'updated_at' => $this->updated_at,
         ];

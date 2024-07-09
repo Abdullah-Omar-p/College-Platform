@@ -13,6 +13,7 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'body' => $this->body,
             'prof_id' => $this->prof_id,
+            'media' => MediaResource::collection($this->whenLoaded('media')), // Eager load media
             'created_at'=> $this->created_at,
             'updated_at'=> $this->updated_at,
         ];

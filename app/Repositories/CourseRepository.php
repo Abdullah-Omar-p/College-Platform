@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Helpers\Helper;
+use App\Http\Controllers\MediaController;
 use App\Http\Resources\CourseResource;
 use App\Interfaces\CourseRepositoryInterface;
 use App\Models\Course;
@@ -13,7 +14,7 @@ class CourseRepository implements CourseRepositoryInterface
 {
     public function list()
     {
-        $courses = Course::paginate(10);
+        $courses = Course::with('media')->paginate(10);
         if ($courses->isEmpty()) {
             return Helper::responseData('No courses found', false, null, 404);
         }
@@ -27,7 +28,7 @@ class CourseRepository implements CourseRepositoryInterface
     public function findById(int $id)
     {
         try {
-            $course = Course::query()->findOrFail($id);
+            $course = Course::query()->with('media')->findOrFail($id);
             return Helper::responseData('Success', true, CourseResource::make($course), 200);
         } catch (ModelNotFoundException $e) {
             return Helper::responseData('Course Not Found', false, null, 404);
@@ -41,13 +42,23 @@ class CourseRepository implements CourseRepositoryInterface
             'course_id' => $course->id,
             'prof_id' => $user->id
         ]);
+        $mimeType = $details['media']->getMimeType();
+        if (isset($details['media'])) {
+            MediaController::saveMedia($details, $mimeType, $course, Course::class);
+        }
+        $course->load('media');
         return Helper::responseData('Course Added Successfully', true, CourseResource::make($course), 200);
     }
 
     public function update(int $id, array $details)
     {
-        Course::query()->where('id', $id)->update($details);
-        $course = Course::find($id);
+        $course = Course::findOrFail($id);
+        $course->update($details);
+        if (isset($details['media'])) {
+            $mimeType = $details['media']->getMimeType();
+            MediaController::updateMedia($details, $mimeType, $course, Course::class, $id);
+        }
+        $course->load('media');
         return Helper::responseData('Course Updated Successfully', true, CourseResource::make($course), 200);
     }
 
@@ -56,9 +67,10 @@ class CourseRepository implements CourseRepositoryInterface
         try {
             $course = Course::findOrFail($id);
             $course->delete();
-
             // .. Delete related CourseProf entries ..
             CourseProf::where('course_id', $course->id)->delete();
+            // .. Delete All Media Related To This Course ..
+            MediaController::removeMedia($course->id, Course::class);
 
             return Helper::responseData('Course Deleted Successfully', true, null, 200);
         } catch (ModelNotFoundException $e) {

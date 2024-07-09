@@ -19,6 +19,7 @@ class StoreCourseRequest extends FormRequest
             'level'=> 'required|string|in:first,second,third,fourth,fifth,sixth,seventh',
             'semester' =>'required|string|in:first,second',
             'units'=>'required|string|in:0,1,2,3,4',
+            'media' => 'nullable|file|mimetypes:video/avi,video/mpeg,video/quicktime,video/mp4,video/x-ms-wmv,video/x-flv,video/x-matroska|max:1024000', // max size is 1GB
         ];
     }
 

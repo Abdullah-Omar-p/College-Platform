@@ -9,12 +9,12 @@ class Course extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',         
-        'name',      
+        'id',
+        'name',
         'description',
-        'level',     
-        'semester',  
-        'units',     
+        'level',
+        'semester',
+        'units',
       ];
 
     public function grades()
@@ -35,5 +35,10 @@ class Course extends Model
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
+    }
+
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediaable');
     }
 }

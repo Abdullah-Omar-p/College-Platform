@@ -39,6 +39,11 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediaable');
+    }
+
     public function grades()
     {
         return $this->hasMany(Grade::class , 'student_id');

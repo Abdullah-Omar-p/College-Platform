@@ -29,4 +29,9 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediaable');
+    }
 }
