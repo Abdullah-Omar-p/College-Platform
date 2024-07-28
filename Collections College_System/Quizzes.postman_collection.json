@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "8756cd6e-c729-4163-8217-cfa46bc27ca3",
+		"name": "Quizzes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/quizzes/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/quizzes/find/34",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"find",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "quiz name",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "quiz description ..",
+							"type": "text"
+						},
+						{
+							"key": "course_id",
+							"value": "34",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/quizzes/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "new name update",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new description update",
+							"type": "text"
+						},
+						{
+							"key": "course_id",
+							"value": "54",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/quizzes/update/53",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"update",
+						"53"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/quizzes/delete/34",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"delete",
+						"34"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

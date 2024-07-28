@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "5e1e84eb-09a5-49a5-89d8-b7fbc4698832",
+		"name": "Comments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/comments/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/comments/find/23",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"comments",
+						"find",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "body",
+							"value": "comment body",
+							"type": "text"
+						},
+						{
+							"key": "post_id",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "parent_id",
+							"value": "53",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/comments/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"comments",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "body",
+							"value": "new comment body update",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/comments/update",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"comments",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/comments/delete/12",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"comments",
+						"delete",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

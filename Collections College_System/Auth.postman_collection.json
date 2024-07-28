@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "85e6881f-9015-4d1f-9e15-1955157ce572",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "superadmin@test.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/auth/login",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/auth/logout",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send mail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/password/email",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"password",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/password/reset",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"password",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

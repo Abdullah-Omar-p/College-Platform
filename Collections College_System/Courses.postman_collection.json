@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "46def829-8695-4061-8511-e2460ef1125c",
+		"name": "Courses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/courses/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create course",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "theory of machine",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "theory of machine and engines and tears",
+							"type": "text"
+						},
+						{
+							"key": "level",
+							"value": "third",
+							"type": "text"
+						},
+						{
+							"key": "semester",
+							"value": "second",
+							"type": "text"
+						},
+						{
+							"key": "units",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/courses/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update course",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "description",
+							"value": "new description",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "new name",
+							"type": "text"
+						},
+						{
+							"key": "level",
+							"value": "fourth",
+							"type": "text"
+						},
+						{
+							"key": "units",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "semestert",
+							"value": "first",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"type": "file",
+							"src": "/D:/c pictures/homescreeen.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/courses/update/61",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"update",
+						"61"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete course",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/courses/delete/27",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"delete",
+						"27"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "a79f24bd-c26c-435f-9b8c-4792d7d2b583",
+		"name": "StudentData",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/student-data/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"student-data",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/student-data/find/33",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"student-data",
+						"find",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "33",
+							"type": "text"
+						},
+						{
+							"key": "national_id",
+							"value": "3256635354323",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "234243",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jkda@g.com",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "asia",
+							"type": "text"
+						},
+						{
+							"key": "family_phone",
+							"value": "45421524",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/student-data/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"student-data",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "234",
+							"type": "text"
+						},
+						{
+							"key": "national_id",
+							"value": "48840203189204",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "4959475",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jkfd@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "jka;jkda;kafd;l",
+							"type": "text"
+						},
+						{
+							"key": "family_phone",
+							"value": "4782978972403",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/student-data/update/33",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"student-data",
+						"update",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "506575cf-a609-4a25-9a29-dfcf8dd62bf9",
+		"name": "Grades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/grades/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"grades",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/grades/find/34",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"grades",
+						"find",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "student_id",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "78",
+							"type": "text"
+						},
+						{
+							"key": "course_id",
+							"value": "23",
+							"type": "text"
+						},
+						{
+							"key": "semester",
+							"value": "first",
+							"type": "text"
+						},
+						{
+							"key": "level",
+							"value": "fourth",
+							"type": "text"
+						},
+						{
+							"key": "course_name",
+							"value": "course name",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/grades/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"grades",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "student_id",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "course_id",
+							"value": "33",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "55",
+							"type": "text"
+						},
+						{
+							"key": "course_name",
+							"value": "course name",
+							"type": "text"
+						},
+						{
+							"key": "level",
+							"value": "fourth",
+							"type": "text"
+						},
+						{
+							"key": "semester",
+							"value": "second",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/grades/update/34",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"grades",
+						"update",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/grades/delete/34",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"grades",
+						"delete",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Student Grades",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/grades/grades",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"grades",
+						"grades"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

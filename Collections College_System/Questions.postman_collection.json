@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "e069691f-edd1-4a61-bba4-eeb5b649ac80",
+		"name": "Questions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/questions/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/questions/find/52",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						"find",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "choice_1",
+							"value": "45",
+							"type": "text"
+						},
+						{
+							"key": "choice_2",
+							"value": "47",
+							"type": "text"
+						},
+						{
+							"key": "choice_3",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "choice_4",
+							"value": "64",
+							"type": "text"
+						},
+						{
+							"key": "right_answer",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "quiz_id",
+							"value": "44",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/questions/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "choice_1",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "choice_2",
+							"value": "45",
+							"type": "text"
+						},
+						{
+							"key": "choice_3",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "choice_4",
+							"value": "44",
+							"type": "text"
+						},
+						{
+							"key": "right_answer",
+							"value": "44",
+							"type": "text"
+						},
+						{
+							"key": "quiz_id",
+							"value": "23",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/questions/update/100",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						"update",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/questions/delete/52",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"questions",
+						"delete",
+						"52"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

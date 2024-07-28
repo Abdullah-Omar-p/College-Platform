@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "c7c5a490-0925-4407-be85-6262f1701e60",
+		"name": "Likes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/likes/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"likes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/likes/find/104",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"likes",
+						"find",
+						"104"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "post_id",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "dislike",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/likes/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"likes",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Like",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type",
+							"value": "love",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/likes/update/104",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"likes",
+						"update",
+						"104"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/likes/delete/103",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"likes",
+						"delete",
+						"103"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "57c881c1-c880-4ab9-8f5b-4089ba9bce08",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31408697"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/users/",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/users/find/44",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"find",
+						"44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "abdullah",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "48284020428",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "abdullahomarj1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "national_id",
+							"value": "48928429489249842",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abdalla@@@",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "abdalla@@@",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/users/create",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ahmed",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "49029820",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "aa@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "national_id",
+							"value": "8420994020-48",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localUrl}}/api/users/update/44",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"update",
+						"44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localUrl}}/api/users/find/44",
+					"host": [
+						"{{localUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"find",
+						"44"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
